@@ -41,27 +41,7 @@ stages{
         } 
   }
   
-  stage('on slave-2'){
   
-    agent{
-	
-	   label{
-	      
-		  label'slave-2'
-		  customWorkspace'/mnt/friend'
-		  
-		 }
-		}
-      
-	  steps{
-	   sh "rm -rf *"
-	   sh "sudo yum install httpd -y"
-	   sh "sudo yum install tree -y"
-	   
-	   
-
-         }
-		}
 
 }
 

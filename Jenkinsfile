@@ -1,11 +1,36 @@
 pipeline {
-    agent any
+agent{
+label{
+		label "built-in"
+		customWorkspace "/data/pipeline"
+}
+}
 
-    stages {
-        stage('Hello') {
-            steps {
-                echo 'Hello World'
-            }
-        }
-    }
+stages {
+
+		stage ("on master"){
+			steps {
+					sh "yum install tree -y"
+			}
+		
+		}
+		
+		stage ("on slave"){
+		agent {
+		
+				label "linux"
+				customWorkspace "/home/ec2-user"
+		
+		
+		}
+		
+		steps {
+				sh "sudo yum install tree -y"
+		
+		}
+		
+		}
+
+}
+
 }
